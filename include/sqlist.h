@@ -34,35 +34,36 @@ Operation
 
 // example
 
-#define LINEAR_LIST_MAXSIZE 20
+#define SQLIST_MAXSIZE 20
 
 typedef struct {
-    ElemType data[LINEAR_LIST_MAXSIZE];
+    ElemType data[SQLIST_MAXSIZE];
     int length;
 } SqList;
 
-// 初始化操作，建立一个空的线性表L。
+// 初始化操作，建立一个空的线性表list。
 extern void SQLIST_InitList(SqList *list);
 
-// 判断线性表L是否为空，若为空返回true，否则返回false。
+// 判断线性表list是否为空，若为空返回true，否则返回false。
 extern bool SQLIST_ListEmpty(const SqList *list);
 
-// 将线性表L重置为空表。
+// 将线性表list重置为空表。
 extern void SQLIST_ClearList(SqList *list);
 
-// 将线性表L中的第i个位置元素返回给e
+// 将线性表list中的第i个位置元素返回给e
 /*
 初始条件：顺序表已存在，1 <= pos <= ListLength(list)
 操作结果：用e返回L中第pos个数据元素的值，注意pos是指位置，第1个位置的数组是从0开始
 */
 extern Status SQLIST_GetElem(const SqList *list, const int pos, ElemType *out_elem);
 
-// 在线性表L中查找与定值e相等的元素，返回该元素在线性表中序号表示成功，否则，返回0表示失败
+// 在线性表L中查找与定值e相等的元素，返回该元素在线性表中序号表示成功，
+// 否则，返回0表示失败
 extern int SQLIST_LocateElem(const SqList *list, const ElemType e);
 
 // 在线性表L的第i个位置插入新的数据元素e
 /*
-初始条件：顺序表L已存在，1 <= pos <= ListLength(L)
+初始条件：顺序表L已存在，1 <= pos <= ListLength(list) + 1
 操作结果：在list的第pos个位置之前插入新的数据元素e，list的长度加1
 思路：
 1. 如果插入位置不合理，抛出异常
@@ -74,7 +75,7 @@ extern int SQLIST_LocateElem(const SqList *list, const ElemType e);
 */
 extern Status SQLIST_ListInsert(SqList *list, const int pos, const ElemType e);
 
-// 删除线性表L的第i个位置的数据元素，并用e返回其值。
+// 删除线性表list的第i个位置的数据元素，并用e返回其值。
 /*
 初始条件：顺序表L已存在，1 <= pos <= ListLength(list)
 操作结果：删除L的第pos个位置的数据元素，并在e!=NULL时用e返回其值,L的长度减1
@@ -87,7 +88,7 @@ extern Status SQLIST_ListInsert(SqList *list, const int pos, const ElemType e);
 */
 extern Status SQLIST_ListDelete(SqList *list, const int pos, ElemType *out_elem);
 
-// 返回线性表L中数据元素的个数。
+// 返回线性表list中数据元素的个数。
 extern int SQLIST_ListLength(const SqList *list); 
 
 // 将所有的在线性表b中但不在线性表a中的元素插入到线性表a中

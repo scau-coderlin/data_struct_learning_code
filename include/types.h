@@ -7,6 +7,7 @@ typedef enum {
     EMPTY,
     FULL,
     OVERFLOW,
+    SYSERR,
 } Status;
 
 typedef int ElemType;
